@@ -1,0 +1,5 @@
+# Dependências do backend
+fastapi
+uvicorn
+sqlalchemy
+pydantic

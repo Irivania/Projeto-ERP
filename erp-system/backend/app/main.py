@@ -6,7 +6,17 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 
+
 from app.modules.dashboard.controller import router as dashboard_router
+
+# Garantir criação das tabelas do banco de dados
+from app.database.base import Base
+from app.database.connection import engine
+from app.modules.estoque.model import Produto
+from app.modules.vendas.model import Venda
+from app.modules.financeiro.model import Transacao
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="ERP Inteligente")
 
